@@ -4,6 +4,14 @@
 ![Minecraft 1.21.1](https://img.shields.io/badge/Minecraft-1.21.1-orange)
 ![NeoForge 21.1.249](https://img.shields.io/badge/NeoForge-21.1.249-green)
 
+> ⚠️ **UNOFFICIAL ADD-ON — READ FIRST**
+>
+> **SimuDelight is an unofficial third-party extension.** It is **not affiliated with, endorsed by, or sponsored by** New:Sim-U-Kraft (NSUK Studio), Farmer's Delight (vectorwing), or any of their add-on developers.
+> - "Sim-U-Kraft", "New:Sim-U-Kraft" and "Farmer's Delight" are names/trademarks of their respective owners; they appear here **only to describe compatibility** and imply no official support.
+> - This mod is a **GPL-3.0 derivative work** of NSUK (also GPL-3.0). It contains **no code or assets from Farmer's Delight** (MIT) — crops are referenced by registry id only.
+> - Issues with this mod belong in **this repository** — please do not report them to NSUK Studio or vectorwing.
+> - Use at your own risk.
+
 **SimuDelight** lets the citizens you hire in [New:Sim-U-Kraft](https://github.com/New-Sim-U-Kraft/New-Simukraft-1.21.1) (NSUK) city-sim farmland boxes grow the whole [Farmer's Delight](https://github.com/vectorwing/FarmersDelight) family of crops — field crops, paddy rice, two-stage corn, watertop cranberries, mushroom colonies, rich-soil crops and trellis tomatoes.
 
 > NSUK's farmland crop table is a hard-coded vanilla enum (6 crops only) with no third-party extension API. This mod bridges a custom "extended crop registry" into NSUK's farmland data and farming services via Mixin, re-implementing the plant/harvest/replant workflow with generic crop semantics. The vanilla crop logic is untouched.
