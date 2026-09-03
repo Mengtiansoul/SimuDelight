@@ -1,0 +1,33 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+runs
+run-data
+
+repo
+
+# 本地构建依赖(compileOnly 第三方 mod jar,按需从原项目下载,不入仓库)
+libs/
+
+# 构建日志与临时产物
+build_log*.txt
+*.log

@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.simudelight.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "FarmlandBoxDataMixin",
+    "FarmlandBoxServiceMixin",
+    "FarmlandFarmingServiceMixin"
+  ],
+  "client": [
+    "client.FarmlandCropScreenMixin",
+    "client.FarmlandBoxScreenOpenerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
