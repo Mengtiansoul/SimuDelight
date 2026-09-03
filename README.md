@@ -1,12 +1,11 @@
 # SimuDelight —— 模拟大都市 × 农夫乐事联动(正式版 1.0.2)
 
-> ⚠️ **非官方附属声明(请先阅读)**
+> ⚠️ 非官方附属声明(请先阅读)
 >
-> **SimuDelight 是第三方非官方扩展**,与 New:Sim-U-Kraft(NSUK Studio)、Farmer's Delight(vectorwing)及各农夫乐事附属 mod 的开发者**无任何隶属、赞助或背书关系**。
-> - "Sim-U-Kraft / New:Sim-U-Kraft / Farmer's Delight" 等名称与商标归各自作者所有,此处引用**仅为说明兼容对象**,不暗示任何官方支持。
-> - 本 mod 是基于 NSUK(GPL-3.0)的 **GPL-3.0 衍生作品**;不含 Farmer's Delight(MIT)任何代码或资源,作物仅以注册表 id 引用。
-> - 本 mod 的问题请在本仓库反馈,**不要打扰上游作者**。
-> - 使用风险自负。
+> SimuDelight 是第三方非官方扩展。
+>
+> 本 mod 的问题请在本仓库反馈,不要打扰上游作者。
+> 使用风险自负。
 
 让 New:Sim-U-Kraft(NSUK)农田作业盒里的市民,种植农夫乐事系列模组的作物。
 

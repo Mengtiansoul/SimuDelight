@@ -6,11 +6,10 @@
 
 > ⚠️ **UNOFFICIAL ADD-ON — READ FIRST**
 >
-> **SimuDelight is an unofficial third-party extension.** It is **not affiliated with, endorsed by, or sponsored by** New:Sim-U-Kraft (NSUK Studio), Farmer's Delight (vectorwing), or any of their add-on developers.
-> - "Sim-U-Kraft", "New:Sim-U-Kraft" and "Farmer's Delight" are names/trademarks of their respective owners; they appear here **only to describe compatibility** and imply no official support.
-> - This mod is a **GPL-3.0 derivative work** of NSUK (also GPL-3.0). It contains **no code or assets from Farmer's Delight** (MIT) — crops are referenced by registry id only.
-> - Issues with this mod belong in **this repository** — please do not report them to NSUK Studio or vectorwing.
-> - Use at your own risk.
+> SimuDelight is an unofficial third-party extension.
+>
+> Issues with this mod belong in this repository — please do not report them to the upstream authors.
+> Use at your own risk.
 
 **SimuDelight** lets the citizens you hire in [New:Sim-U-Kraft](https://github.com/New-Sim-U-Kraft/New-Simukraft-1.21.1) (NSUK) city-sim farmland boxes grow the whole [Farmer's Delight](https://github.com/vectorwing/FarmersDelight) family of crops — field crops, paddy rice, two-stage corn, watertop cranberries, mushroom colonies, rich-soil crops and trellis tomatoes.
 
