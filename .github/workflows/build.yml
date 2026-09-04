@@ -21,5 +21,9 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      # 本地(国内)用腾讯镜像加速;GitHub runner 在境外,把 wrapper 指回官方发行版源
+      - name: Point gradle wrapper to official distribution (CI runs outside CN)
+        run: sed -i 's#mirrors\.cloud\.tencent\.com/gradle/#services.gradle.org/distributions/#g' gradle/wrapper/gradle-wrapper.properties
+
       - name: Build with Gradle
         run: ./gradlew build
