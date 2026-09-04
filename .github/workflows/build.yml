@@ -25,5 +25,20 @@ jobs:
       - name: Point gradle wrapper to official distribution (CI runs outside CN)
         run: sed -i 's#mirrors\.cloud\.tencent\.com/gradle/#services.gradle.org/distributions/#g' gradle/wrapper/gradle-wrapper.properties
 
+      # libs/(compileOnly 第三方 jar)被 .gitignore 排除、不入仓库,CI 需自行下载;
+      # taffy/yoga 是 LDLib 的 jar-in-jar 组件,从 ldlib jar 中提取
+      - name: Download compileOnly deps (NSUK / Farmer's Delight / LDLib)
+        run: |
+          set -e
+          mkdir -p libs
+          curl -sSL --retry 3 -o libs/simukraft-2.2.0.jar "https://cdn.modrinth.com/data/70LWU0bA/versions/sQTfF8mn/New-Sim-U-Kraft-2.2.0-neoforge-1.21.1.jar"
+          curl -sSL --retry 3 -o libs/farmersdelight-1.3.4.jar "https://cdn.modrinth.com/data/R2OftAxM/versions/XTVZDOol/FarmersDelight-1.21.1-1.3.4.jar"
+          curl -sSL --retry 3 -o libs/ldlib2-2.2.38.a.jar "https://cdn.modrinth.com/data/B1CBVXHX/versions/GxTKOEhs/ldlib2-neoforge-1.21.1-2.2.38.a-all.jar"
+          cd libs
+          unzip -o -j ldlib2-2.2.38.a.jar "META-INF/jarjar/taffy-*.jar" "META-INF/jarjar/yoga-*.jar"
+          for f in taffy-*.jar; do [ "$f" != "taffy-1.1.4.jar" ] && mv "$f" taffy-1.1.4.jar; done
+          for f in yoga-*.jar; do [ "$f" != "yoga-1.0.0.jar" ] && mv "$f" yoga-1.0.0.jar; done
+          ls -la
+
       - name: Build with Gradle
         run: ./gradlew build
