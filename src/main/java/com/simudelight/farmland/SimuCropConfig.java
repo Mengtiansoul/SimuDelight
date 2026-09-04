@@ -67,24 +67,23 @@ import java.util.Map;
  */
 public final class SimuCropConfig {
 
-    /** 清单格式版本:低于此版本的旧文件会被内置默认升级覆盖。 */
-    private static final int FORMAT_VERSION = 5;
-
-    /** 已从内置清单移除的作物 id(升级时从旧配置文件里一并剔除)。 */
-    private static final java.util.Set<String> REMOVED_BUILTINS = java.util.Set.of(
-            "fd_brown_mushroom", // 蘑菇菌落(种植已取消)
-            "fd_red_mushroom"
-    );
+    /**
+     * 清单格式版本:低于此版本的旧文件会被内置默认升级覆盖。
+     * v6(1.0.3):恢复内置棕/红蘑菇菌落(FD mushroom_colony 种在沃土上,农夫采 3 留株)。
+     */
+    private static final int FORMAT_VERSION = 6;
 
     /** 数据驱动文件的默认内容(首启写出;也是文件缺失/损坏时的回退清单)。 */
     private static final String DEFAULT_JSON = """
             {
-              "_comment": "SimuDelight 扩展作物清单(数据驱动,格式版本 5)。id=存档标识(勿与原版作物 wheat/carrots/potatoes/beetroots/melon/pumpkin 重复);seedItem=放进材料箱的种子;plantBlock=种下的下层作物方块;kind=种植语义(full 满铺 CropBlock / soil 专用介质 / tall 两段作物(下层+上层如玉米) / paddy 水田水稻 / watertop 水面作物 / colony 菌落);topBlock=kind=tall 时下层成熟后自长的上层方块(农夫收它);soilBlock+soilItem=kind=soil/colony 的介质;ropes=true=攀绳作物(番茄)。删除条目=禁用;目标 mod 未安装的条目自动跳过。",
+              "_comment": "SimuDelight 扩展作物清单(数据驱动,格式版本 6)。id=存档标识(勿与原版作物 wheat/carrots/potatoes/beetroots/melon/pumpkin 重复);seedItem=放进材料箱的种子;plantBlock=种下的下层作物方块;kind=种植语义(full 满铺 CropBlock / soil 专用介质 / tall 两段作物(下层+上层如玉米) / paddy 水田水稻 / watertop 水面作物 / colony 菌落);topBlock=kind=tall 时下层成熟后自长的上层方块(农夫收它);soilBlock+soilItem=kind=soil/colony 的介质;ropes=true=攀绳作物(番茄)。删除条目=禁用;目标 mod 未安装的条目自动跳过。",
               "crops": [
                 { "id": "fd_cabbage",        "seedItem": "farmersdelight:cabbage_seeds",   "plantBlock": "farmersdelight:cabbages",  "kind": "full" },
                 { "id": "fd_onion",          "seedItem": "farmersdelight:onion",           "plantBlock": "farmersdelight:onions",    "kind": "full" },
                 { "id": "fd_tomato",         "seedItem": "farmersdelight:tomato_seeds",    "plantBlock": "farmersdelight:tomatoes",  "kind": "full", "ropes": true },
                 { "id": "fd_rice",           "seedItem": "farmersdelight:rice",            "plantBlock": "farmersdelight:rice",      "kind": "paddy", "topBlock": "farmersdelight:rice_panicles" },
+                { "id": "fd_brown_mushroom", "seedItem": "minecraft:brown_mushroom",       "plantBlock": "farmersdelight:brown_mushroom_colony", "kind": "colony", "soilBlock": "farmersdelight:rich_soil", "soilItem": "farmersdelight:rich_soil" },
+                { "id": "fd_red_mushroom",   "seedItem": "minecraft:red_mushroom",         "plantBlock": "farmersdelight:red_mushroom_colony",   "kind": "colony", "soilBlock": "farmersdelight:rich_soil", "soilItem": "farmersdelight:rich_soil" },
                 { "id": "ed_asparagus",      "seedItem": "expandeddelight:asparagus_seeds",    "plantBlock": "expandeddelight:asparagus_crop",  "kind": "full" },
                 { "id": "ed_chili_pepper",   "seedItem": "expandeddelight:chili_pepper_seeds", "plantBlock": "expandeddelight:chili_pepper_crop", "kind": "full" },
                 { "id": "ed_peanut",         "seedItem": "expandeddelight:peanut",            "plantBlock": "expandeddelight:peanut_crop",      "kind": "full" },
@@ -163,10 +162,6 @@ public final class SimuCropConfig {
             List<CropDef> upgraded = new ArrayList<>(defs.size() + defaults.size());
             boolean changed = false;
             for (CropDef def : defs) {
-                if (REMOVED_BUILTINS.contains(def.id)) {
-                    changed = true; // 已取消的内置作物:剔除
-                    continue;
-                }
                 CropDef fresh = defaultById.get(def.id);
                 if (fresh != null) {
                     upgraded.add(fresh); // 内置条目:以默认模板覆盖

@@ -1,5 +1,9 @@
 # Changelog — SimuDelight
 
+## 1.0.3 (2026-09-04)
+- 恢复内置蘑菇菌落种植(fd_brown_mushroom / fd_red_mushroom):FD brown/red_mushroom_colony 种在沃土上,农夫铺沃土→种菌落→成熟采 3 个蘑菇留株续长;config 升级 v6 自动为旧文件补回条目,并补回双语翻译
+- 机制自检:FD 1.3.4 菌落随机刻生长只看下方沃土(不看光照)、可骨粉催熟、NSUK 原版 applyBonemealWork 对扩展作物天然兼容,无需新增 mixin
+
 ## 1.0.2 (2026-09-04)
 - 最终审查修复:清场扫描覆盖作物格下一格(切走水田时坑内水稻株回收掉落);paddy 坑口预灌水自动排干(避免水稻被埋);注释与实现同步
 
